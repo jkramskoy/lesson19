@@ -5,19 +5,28 @@
     <title>Lesson 19</title>
 </head>
 <body>
-<form method="post" action="/populate">
-            <input type="text" name="user-name" placeholder="Enter your name"><br>
-            <input type="email" name="user-email" placeholder="Enter your email address"><br>
 
-            <button>Add</button>
-        </form>
-
+{% if user %}
+<h2>Welcome {{user.name}}</h2>
 <form method="post" action="/guess">
-    <label>Guess:</label>
-            <input type="number" name="guess" ><br>
-            <input type="email" name="user-email" placeholder="Enter your email address"><br>
-            <button>Submit</button>
-        </form>
+    <label>Guess: </label>
+    <input type="number" name="guess">
+    <button>Submit</button>
+</form>
+{% else %}
+<form method="post" action="/populate">
+    <label>Name: </label>
+    <input type="text" name="user-name" placeholder="Enter Name">
+    <br>
+    <label>Email: </label>
+    <input type="email" name="user-email" placeholder="Enter Email">
+    <br>
+    <label>Password: </label>
+    <input type="password" name="user-password" placeholder="Enter Password">
+    <br>
+    <button>Add</button>
+</form>
+{% endif %}
 
 
 </body>
